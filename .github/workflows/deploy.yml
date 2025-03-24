@@ -4,9 +4,19 @@ on:
   push:
     branches:
       - main
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
 
 jobs:
   build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -36,13 +46,22 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
         role-session-name: GitHub-OIDC-TERRAFORM
 
+    - name: Install eksctl
+      run: |
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.94.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
       with:
         version: 'v1.18.0'
 
     - name: Update kubeconfig
-      run: eksctl utils write-kubeconfig --cluster=demo-cluster --region=${{ secrets.AWS_REGION }}
+      run: |
+        aws eks update-kubeconfig --name demo-cluster --region ${{ secrets.AWS_REGION }}
+
+    - name: Verify kubeconfig
+      run: kubectl config view
 
     - name: Deploy to Kubernetes
       run: kubectl apply -f nginx-project/statefulset.yaml
