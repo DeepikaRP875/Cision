@@ -69,12 +69,6 @@ jobs:
     - name: Set Kubernetes Context
       run: kubectl config use-context arn:aws:eks:${{ secrets.AWS_REGION }}:${{ secrets.AWS_ACCOUNT_ID }}:cluster/${{ secrets.EKS_CLUSTER_NAME }}
 
-    - name: Unset AWS Environment Variables
-      run: |
-        unset AWS_ACCESS_KEY_ID
-        unset AWS_SECRET_ACCESS_KEY
-        unset AWS_SESSION_TOKEN
-
     - name: Deploy to Kubernetes
       run: |
         sleep 5 # Add a small delay
