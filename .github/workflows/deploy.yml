@@ -30,7 +30,7 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
     - name: Run security scan
-      uses: aquasecurity/trivy-action@v0.4.0
+      uses: aquasecurity/trivy-action@v0.28.0
       with:
         image-ref: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
