@@ -1,11 +1,8 @@
-# Use the official nginx base image
+# Use the official NGINX base image from Docker Hub
 FROM nginx:1.19-alpine
-
-# Copy custom configuration file from the host to the container
-COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80
 
-# Start nginx
+# Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
