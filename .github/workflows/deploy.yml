@@ -46,6 +46,11 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
         role-session-name: GitHub-OIDC-TERRAFORM
 
+    - name: Install eksctl
+      run: |
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.94.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
       with:
