@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-     
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,35 +14,35 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v1.5.1
 
     - name: Login to DockerHub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v1.10.0
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.10.0
       with:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
     - name: Run security scan
-      uses: aquasecurity/trivy-action@master
+      uses: aquasecurity/trivy-action@v0.4.0
       with:
         image-ref: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
     - name: Assume IAM Role
       id: assume-role
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v1.6.0
       with:
         role-to-assume: ${{ secrets.AWS_ROLE }}
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v1
+      uses: azure/setup-kubectl@v1.1.0
       with:
         version: 'v1.18.0'
 
