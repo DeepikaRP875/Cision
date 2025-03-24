@@ -67,7 +67,7 @@ jobs:
       run: kubectl config view
 
     - name: Set Kubernetes Context
-      run: kubectl config use-context iam-root-account@demo-cluster.ap-south-1.eksctl.io
+      run: kubectl config use-context demo-cluster.ap-south-1.eksctl.io
 
     - name: Unset AWS Environment Variables
       run: |
