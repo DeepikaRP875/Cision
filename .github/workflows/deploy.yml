@@ -1,13 +1,24 @@
-name: Nginx CI/CD
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
 
 jobs:
-  build_and_deploy:
+  build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -24,7 +35,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v2.10.0
       with:
-        context: .
+        context: ./nginx-project
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
@@ -49,16 +60,17 @@ jobs:
       run: |
         aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
 
+    - name: Verify AWS credentials
+      run: aws sts get-caller-identity
+
+    - name: Verify kubeconfig
+      run: kubectl config view
+
     - name: Set Kubernetes Context
       run: kubectl config use-context arn:aws:eks:${{ secrets.AWS_REGION }}:${{ secrets.AWS_ACCOUNT_ID }}:cluster/${{ secrets.EKS_CLUSTER_NAME }}
 
-    - name: Unset AWS Environment Variables
-      run: |
-        unset AWS_ACCESS_KEY_ID
-        unset AWS_SECRET_ACCESS_KEY
-        unset AWS_SESSION_TOKEN
 
     - name: Deploy to Kubernetes
       run: |
-        sleep 5
+        sleep 5 # Add a small delay
         kubectl apply -f nginx-project/statefulset.yaml
