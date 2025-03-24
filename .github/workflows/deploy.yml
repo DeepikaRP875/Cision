@@ -29,12 +29,12 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
-    - name: Assume IAM Role
-      id: assume-role
-      uses: aws-actions/configure-aws-credentials@v1.6.0
+    - name: Configure AWS credentials from AWS account
+      uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: ${{ secrets.AWS_ROLE }}
         aws-region: ${{ secrets.AWS_REGION }}
+        role-session-name: GitHub-OIDC-TERRAFORM
 
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
