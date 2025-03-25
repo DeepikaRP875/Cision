@@ -66,7 +66,7 @@ jobs:
     - name: Apply Nginx Service YAML in Minikube
       run: |
         kubectl apply -f nginx-project/nginx-service.yml
-        kubectl rollout status service/nginx
+        kubectl get service nginx
 
     - name: Port-forward the service for access
       run: |
