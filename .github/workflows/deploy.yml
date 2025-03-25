@@ -16,6 +16,10 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
+    # Debugging step to confirm Dockerfile existence
+    - name: Verify Dockerfile existence
+      run: ls -l ./nginx-project
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1.5.1
 
@@ -28,10 +32,11 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v2.10.0
       with:
-        context: .
+        context: ./nginx-project
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
+    # Install and start Minikube
     - name: Install Minikube
       run: |
         curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.30.0/minikube-linux-amd64
@@ -54,12 +59,12 @@ jobs:
 
     - name: Apply StatefulSet YAML in Minikube
       run: |
-        kubectl apply -f statefulset.yaml
+        kubectl apply -f nginx-project/statefulset.yaml
         kubectl rollout status statefulset/nginx-statefulset
 
     - name: Apply Nginx Service YAML in Minikube
       run: |
-        kubectl apply -f nginx-service.yaml
+        kubectl apply -f nginx-project/nginx-service.yml
         kubectl rollout status service/nginx
 
     - name: Port-forward the service for access
