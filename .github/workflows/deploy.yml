@@ -36,37 +36,49 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
-    # Install and start Minikube with version 1.35.0
-    - name: Install Minikube v1.35.0
+    # Install and start Minikube
+    - name: Install Minikube
       run: |
         curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.35.0/minikube-linux-amd64
         chmod +x minikube
         sudo mv minikube /usr/local/bin/
         minikube version
-    
+
     - name: Start Minikube with Docker driver
       run: |
         minikube start --driver=docker
-    
+
     - name: Set up kubectl to work with Minikube
       run: |
         echo "export KUBEVERSION=$(minikube kubectl --version)" >> $GITHUB_ENV
-        echo "export KUBEVERSION"        
         echo "export KUBE_CTX=default" >> $GITHUB_ENV
-        echo "export KUBE_CTX" 
         echo "export MINIKUBE_PROFILE=default" >> $GITHUB_ENV
-        echo "export MINIKUBE_PROFILE"
-    
+
     - name: Apply StatefulSet YAML in Minikube
       run: |
         kubectl apply -f nginx-project/statefulset.yaml
-        kubectl rollout status statefulset/nginx-statefulset
-    
+        kubectl rollout status statefulset/nginx-statefulset --timeout=5m
+        # Watch pod status until all pods are ready, with a 5-minute timeout.
+        PODS_READY=$(kubectl get pods -l app=nginx-statefulset -o jsonpath='{.items[?(@.status.phase=="Running")].metadata.name}' | wc -w)
+        START_TIME=$(date +%s)
+        while [ "$PODS_READY" -ne 3 ]; do
+          CURRENT_TIME=$(date +%s)
+          ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+          if [ "$ELAPSED_TIME" -ge 300 ]; then
+            echo "Error: Pods are not ready after 5 minutes."
+            exit 1
+          fi
+          echo "Waiting for pods to be ready... Current ready pods: $PODS_READY"
+          sleep 5
+          PODS_READY=$(kubectl get pods -l app=nginx-statefulset -o jsonpath='{.items[?(@.status.phase=="Running")].metadata.name}' | wc -w)
+        done
+        echo "All pods are ready."
+
     - name: Apply Nginx Service YAML in Minikube
       run: |
         kubectl apply -f nginx-project/nginx-service.yml
         kubectl rollout status service/nginx
-    
+
     - name: Port-forward the service for access
       run: |
         kubectl port-forward svc/nginx 8080:80 &
