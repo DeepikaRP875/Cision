@@ -1,4 +1,4 @@
-name: Build and Deploy to Minikube
+name: Build and Deploy to Local Minikube
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout Repository
@@ -36,24 +36,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
-    # Install and start Minikube
-    - name: Install Minikube
-      run: |
-        curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.35.0/minikube-linux-amd64
-        chmod +x minikube
-        sudo mv minikube /usr/local/bin/
-        minikube version
-
-    - name: Start Minikube with Docker driver
-      run: |
-        minikube start --driver=docker
-
-    - name: Set up kubectl to work with Minikube
-      run: |
-        echo "export KUBEVERSION=$(minikube kubectl --version)" >> $GITHUB_ENV
-        echo "export KUBE_CTX=default" >> $GITHUB_ENV
-        echo "export MINIKUBE_PROFILE=default" >> $GITHUB_ENV
-
     - name: Apply StatefulSet YAML in Minikube
       run: |
         kubectl apply -f nginx-project/statefulset.yaml
@@ -66,6 +48,9 @@ jobs:
           ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
           if [ "$ELAPSED_TIME" -ge 300 ]; then
             echo "Error: Pods are not ready after 5 minutes."
+            kubectl describe statefulset nginx-statefulset
+            kubectl get pods -l app=nginx-statefulset -o wide
+            kubectl logs -l app=nginx-statefulset
             exit 1
           fi
           echo "Waiting for pods to be ready... Current ready pods: $PODS_READY"

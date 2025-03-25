@@ -1,0 +1,224 @@
+[2025-03-25 06:27:21Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-03-25 06:27:21Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:21Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:21Z INFO HostContext] Well known config file 'Credentials': '/Users/deepikarajendran/Cision/actions-runner/.credentials'
+[2025-03-25 06:27:21Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:21Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:21Z INFO HostContext] Well known config file 'Runner': '/Users/deepikarajendran/Cision/actions-runner/.runner'
+[2025-03-25 06:27:21Z INFO Listener] Runner is built for OSX (X64) - osx-x64.
+[2025-03-25 06:27:21Z INFO Listener] RuntimeInformation: Darwin 24.3.0 Darwin Kernel Version 24.3.0: Thu Jan  2 20:24:16 PST 2025; root:xnu-11215.81.4~3/RELEASE_ARM64_T6000.
+[2025-03-25 06:27:22Z INFO Listener] Version: 2.323.0
+[2025-03-25 06:27:22Z INFO Listener] Commit: d8b82f44a9ec0258904d5869ae683c31d5aac299
+[2025-03-25 06:27:22Z INFO Listener] Culture: en-US
+[2025-03-25 06:27:22Z INFO Listener] UI Culture: en-US
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO Listener] Validating directory permissions for: '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO CommandLineParser] Parse
+[2025-03-25 06:27:22Z INFO CommandLineParser] Parsing 5 args
+[2025-03-25 06:27:22Z INFO CommandLineParser] parsing argument
+[2025-03-25 06:27:22Z INFO CommandLineParser] HasArgs: False
+[2025-03-25 06:27:22Z INFO CommandLineParser] Adding Command: configure
+[2025-03-25 06:27:22Z INFO CommandLineParser] parsing argument
+[2025-03-25 06:27:22Z INFO CommandLineParser] HasArgs: True
+[2025-03-25 06:27:22Z INFO CommandLineParser] arg: url
+[2025-03-25 06:27:22Z INFO CommandLineParser] parsing argument
+[2025-03-25 06:27:22Z INFO CommandLineParser] HasArgs: True
+[2025-03-25 06:27:22Z INFO CommandLineParser] Adding option 'url': 'https://github.com/DeepikaRP875/Cision'
+[2025-03-25 06:27:22Z INFO CommandLineParser] parsing argument
+[2025-03-25 06:27:22Z INFO CommandLineParser] HasArgs: True
+[2025-03-25 06:27:22Z INFO CommandLineParser] arg: token
+[2025-03-25 06:27:22Z INFO CommandLineParser] parsing argument
+[2025-03-25 06:27:22Z INFO CommandLineParser] HasArgs: True
+[2025-03-25 06:27:22Z INFO CommandLineParser] Adding option 'token': '***'
+[2025-03-25 06:27:22Z INFO Listener] Arguments parsed
+[2025-03-25 06:27:22Z INFO Runner] ExecuteCommand
+[2025-03-25 06:27:22Z INFO ConfigurationStore] currentAssemblyLocation: /Users/deepikarajendran/Cision/actions-runner/bin/Runner.Listener.dll
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] binPath: /Users/deepikarajendran/Cision/actions-runner/bin
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] RootFolder: /Users/deepikarajendran/Cision/actions-runner
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO HostContext] Well known config file 'Runner': '/Users/deepikarajendran/Cision/actions-runner/.runner'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] ConfigFilePath: /Users/deepikarajendran/Cision/actions-runner/.runner
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO HostContext] Well known config file 'MigratedRunner': '/Users/deepikarajendran/Cision/actions-runner/.runner_migrated'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] MigratedConfigFilePath: /Users/deepikarajendran/Cision/actions-runner/.runner_migrated
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO HostContext] Well known config file 'Credentials': '/Users/deepikarajendran/Cision/actions-runner/.credentials'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] CredFilePath: /Users/deepikarajendran/Cision/actions-runner/.credentials
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO HostContext] Well known config file 'MigratedCredentials': '/Users/deepikarajendran/Cision/actions-runner/.credentials_migrated'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] MigratedCredFilePath: /Users/deepikarajendran/Cision/actions-runner/.credentials_migrated
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:22Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:22Z INFO HostContext] Well known config file 'Service': '/Users/deepikarajendran/Cision/actions-runner/.service'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] ServiceConfigFilePath: /Users/deepikarajendran/Cision/actions-runner/.service
+[2025-03-25 06:27:22Z INFO CommandSettings] Flag 'help': 'False'
+[2025-03-25 06:27:22Z INFO CommandSettings] Flag 'version': 'False'
+[2025-03-25 06:27:22Z INFO CommandSettings] Flag 'commit': 'False'
+[2025-03-25 06:27:22Z INFO CommandSettings] Flag 'check': 'False'
+[2025-03-25 06:27:22Z INFO CommandSettings] Command 'configure': 'True'
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: --------------------------------------------------------------------------------
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |        ____ _ _   _   _       _          _        _   _                      |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |       / ___(_) |_| | | |_   _| |__      / \   ___| |_(_) ___  _ __  ___      |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |      | |  _| | __| |_| | | | | '_ \    / _ \ / __| __| |/ _ \| '_ \/ __|     |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |      | |_| | | |_|  _  | |_| | |_) |  / ___ \ (__| |_| | (_) | | | \__ \     |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |       \____|_|\__|_| |_|\__,_|_.__/  /_/   \_\___|\__|_|\___/|_| |_|___/     |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |                                                                              |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE: |                       
+[2025-03-25 06:27:22Z INFO Terminal] WRITE: Self-hosted runner registration
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE:                         |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: |                                                                              |
+[2025-03-25 06:27:22Z INFO Terminal] WRITE LINE: --------------------------------------------------------------------------------
+[2025-03-25 06:27:22Z INFO ConfigurationManager] ConfigureAsync
+[2025-03-25 06:27:22Z INFO CommandSettings] Flag 'generateServiceConfig': 'False'
+[2025-03-25 06:27:22Z INFO ConfigurationStore] IsConfigured()
+[2025-03-25 06:27:22Z INFO ConfigurationStore] IsConfigured: False
+[2025-03-25 06:27:22Z INFO ConfigurationManager] Is configured: False
+[2025-03-25 06:27:22Z INFO CommandSettings] Arg 'url': 'https://github.com/DeepikaRP875/Cision'
+[2025-03-25 06:27:22Z INFO CommandSettings] Remove url from Arg dictionary.
+[2025-03-25 06:27:22Z INFO CommandSettings] Arg 'token': '***'
+[2025-03-25 06:27:22Z INFO CommandSettings] Remove token from Arg dictionary.
+[2025-03-25 06:27:28Z INFO ConfigurationManager] Http response code: OK from 'POST https://api.github.com/actions/runner-registration' (AF1C:48EA2:31CA69:41F81D:67E24CCF)
+[2025-03-25 06:27:28Z INFO ConfigurationManager] Using V2 flow: False
+[2025-03-25 06:27:28Z INFO ConfigurationManager] cred retrieved via GitHub auth
+[2025-03-25 06:27:28Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:27:28Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2025-03-25 06:27:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:27:29Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:27:29Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-03-25 06:27:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:27:29Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:27:29Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-03-25 06:27:29Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:27:31Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:27:31Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:27:31Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:27:31Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:27:31Z INFO ConfigurationManager] Test Connection complete.
+[2025-03-25 06:27:31Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:31Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:31Z INFO HostContext] Well known config file 'RSACredentials': '/Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams'
+[2025-03-25 06:27:31Z INFO RSAFileKeyManager] Creating new RSA key using 2048-bit key length
+[2025-03-25 06:27:31Z INFO RSAFileKeyManager] Successfully saved RSA key parameters to file /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams
+[2025-03-25 06:27:31Z INFO RSAFileKeyManager] Which2: 'chmod'
+[2025-03-25 06:27:31Z INFO RSAFileKeyManager] Location: '/bin/chmod'
+[2025-03-25 06:27:31Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:27:31Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper] Starting process:
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   File name: '/bin/chmod'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Arguments: '600 /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Working directory: '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-03-25 06:27:31Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-03-25 06:27:32Z INFO ProcessInvokerWrapper] Process started with process id 42849, waiting for process exit.
+[2025-03-25 06:27:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-03-25 06:27:32Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-03-25 06:27:32Z INFO ProcessInvokerWrapper] Finished process 42849 with exit code 0, and elapsed time 00:00:00.5089989.
+[2025-03-25 06:27:32Z INFO RSAFileKeyManager] Successfully set permissions for RSA key parameters file /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams
+[2025-03-25 06:27:32Z INFO CommandSettings] Arg 'runnergroup': ''
+[2025-03-25 06:27:32Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-03-25 06:27:32Z INFO PromptManager] ReadValue
+[2025-03-25 06:27:32Z INFO Terminal] WRITE: Enter the name of the runner group to add this runner to: 
+[2025-03-25 06:27:32Z INFO Terminal] WRITE: [press Enter for Default] 
+[2025-03-25 06:27:32Z INFO Terminal] READ LINE
+[2025-03-25 06:28:04Z INFO Terminal] Read value: ''
+[2025-03-25 06:28:04Z INFO PromptManager] Falling back to the default: 'Default'
+[2025-03-25 06:28:04Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:28:04Z INFO ConfigurationManager] Found a self-hosted runner group with id 1 and name Default
+[2025-03-25 06:28:04Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-03-25 06:28:04Z INFO CommandSettings] Flag 'ephemeral': 'False'
+[2025-03-25 06:28:04Z INFO CommandSettings] Arg 'name': ''
+[2025-03-25 06:28:04Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-03-25 06:28:04Z INFO PromptManager] ReadValue
+[2025-03-25 06:28:04Z INFO Terminal] WRITE: Enter the name of runner: 
+[2025-03-25 06:28:04Z INFO Terminal] WRITE: [press Enter for ALIPL2661] 
+[2025-03-25 06:28:04Z INFO Terminal] READ LINE
+[2025-03-25 06:28:10Z INFO Terminal] Read value: ''
+[2025-03-25 06:28:10Z INFO PromptManager] Falling back to the default: 'ALIPL2661'
+[2025-03-25 06:28:10Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:28:10Z INFO CommandSettings] Arg 'labels': ''
+[2025-03-25 06:28:10Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-03-25 06:28:10Z INFO PromptManager] ReadValue
+[2025-03-25 06:28:10Z INFO Terminal] WRITE: This runner will have the following labels: 'self-hosted', 'macOS', 'X64' 
+Enter any additional labels (ex. label-1,label-2): 
+[2025-03-25 06:28:10Z INFO Terminal] WRITE: [press Enter to skip] 
+[2025-03-25 06:28:10Z INFO Terminal] READ LINE
+[2025-03-25 06:28:53Z INFO Terminal] Read value: ''
+[2025-03-25 06:28:53Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:28:55Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-03-25 06:28:55Z INFO CommandSettings] Flag 'no-default-labels': 'False'
+[2025-03-25 06:28:55Z INFO CommandSettings] Flag 'disableupdate': 'False'
+[2025-03-25 06:28:55Z INFO CommandSettings] Flag 'ephemeral': 'False'
+[2025-03-25 06:28:55Z INFO ConfigurationStore] Saving OAuth credential @ /Users/deepikarajendran/Cision/actions-runner/.credentials
+[2025-03-25 06:28:55Z INFO ConfigurationStore] Credentials Saved.
+[2025-03-25 06:28:55Z INFO ConfigurationStore] HasCredentials()
+[2025-03-25 06:28:55Z INFO ConfigurationStore] stored True
+[2025-03-25 06:28:55Z INFO CredentialManager] GetCredentialProvider
+[2025-03-25 06:28:55Z INFO CredentialManager] Creating type OAuth
+[2025-03-25 06:28:55Z INFO CredentialManager] Creating credential type: OAuth
+[2025-03-25 06:28:55Z INFO RSAFileKeyManager] Loading RSA key parameters from file /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams
+[2025-03-25 06:28:55Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:28:55Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2025-03-25 06:28:55Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:28:55Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:28:55Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-03-25 06:28:55Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:28:55Z INFO RunnerServer] EstablishVssConnection
+[2025-03-25 06:28:55Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2025-03-25 06:28:55Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-03-25 06:28:56Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:28:56Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:28:56Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-03-25 06:28:57Z INFO RSAFileKeyManager] Loading RSA key parameters from file /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams
+[2025-03-25 06:28:57Z INFO RSAFileKeyManager] Loading RSA key parameters from file /Users/deepikarajendran/Cision/actions-runner/.credentials_rsaparams
+[2025-03-25 06:28:58Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2025-03-25 06:28:58Z INFO CommandSettings] Arg 'work': ''
+[2025-03-25 06:28:58Z INFO CommandSettings] Flag 'unattended': 'False'
+[2025-03-25 06:28:58Z INFO PromptManager] ReadValue
+[2025-03-25 06:28:58Z INFO Terminal] WRITE: Enter name of work folder: 
+[2025-03-25 06:28:58Z INFO Terminal] WRITE: [press Enter for _work] 
+[2025-03-25 06:28:58Z INFO Terminal] READ LINE
+[2025-03-25 06:29:27Z INFO Terminal] Read value: ''
+[2025-03-25 06:29:27Z INFO PromptManager] Falling back to the default: '_work'
+[2025-03-25 06:29:27Z INFO ConfigurationStore] Saving runner settings.
+[2025-03-25 06:29:27Z INFO ConfigurationStore] Settings Saved.
+[2025-03-25 06:29:27Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:29:27Z INFO Terminal] WRITE LINE: 
+[2025-03-25 06:29:27Z INFO OsxServiceControlManager] Service name 'actions.runner.DeepikaRP875-Cision.ALIPL2661' display name 'GitHub Actions Runner (DeepikaRP875-Cision.ALIPL2661)' will be used for service configuration.
+[2025-03-25 06:29:27Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:29:27Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:29:27Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:29:27Z INFO HostContext] Well known directory 'Bin': '/Users/deepikarajendran/Cision/actions-runner/bin'
+[2025-03-25 06:29:27Z INFO HostContext] Well known directory 'Root': '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:29:27Z INFO UnixUtil] Which2: 'chmod'
+[2025-03-25 06:29:27Z INFO UnixUtil] Location: '/bin/chmod'
+[2025-03-25 06:29:27Z INFO UnixUtil] Running /bin/chmod 755 "/Users/deepikarajendran/Cision/actions-runner/svc.sh"
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper] Starting process:
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   File name: '/bin/chmod'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Arguments: '755 "/Users/deepikarajendran/Cision/actions-runner/svc.sh"'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Working directory: '/Users/deepikarajendran/Cision/actions-runner'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Require exit code zero: 'True'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper] Process started with process id 42916, waiting for process exit.
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-03-25 06:29:27Z INFO ProcessInvokerWrapper] Finished process 42916 with exit code 0, and elapsed time 00:00:00.0737870.
+[2025-03-25 06:29:27Z INFO Listener] Runner execution has finished with return code 0
