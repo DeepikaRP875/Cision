@@ -14,7 +14,7 @@ try:
         print(f"Grep Result: {grep_result.stdout.strip()}")
 
         # Step 4: Use tr to delete vowels in 'deepika'
-        tr_result = subprocess.run(f"echo {grep_result.stdout.strip()} | tr -d 'aeiou'", capture_output=True, text=True, shell=True)
+        tr_result = subprocess.run(f"echo {grep_result.stdout.strip()} | tr -d 'eiou'", capture_output=True, text=True, shell=True)
         print(f"Tr Result: {tr_result.stdout.strip()}")
 
         # Replace 'deepika' with the result of tr in the original content
