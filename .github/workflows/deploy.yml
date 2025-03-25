@@ -36,6 +36,10 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
 
+    - name: Delete Existing StatefulSet
+      run: |
+        kubectl delete statefulset nginx-statefulset --ignore-not-found=true
+
     - name: Apply StatefulSet YAML in Minikube
       run: |
         kubectl apply -f nginx-project/statefulset.yaml
