@@ -7,25 +7,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-statefulset
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-statefulset
     spec:
       containers:
       - name: nginx
-        image: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
+        image: "deepika2897/demodockerrepo:1.19"
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: nginx-data
-          mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
-  - metadata:
-      name: nginx-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
