@@ -35,11 +35,10 @@ jobs:
         context: ./nginx-project
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
-
+        
     - name: Delete Existing StatefulSet
       run: |
         kubectl delete statefulset nginx-statefulset --ignore-not-found=true
-
     - name: Apply StatefulSet YAML in Minikube
       run: |
         kubectl apply -f nginx-project/statefulset.yaml
@@ -62,12 +61,10 @@ jobs:
           PODS_READY=$(kubectl get pods -l app=nginx-statefulset -o jsonpath='{.items[?(@.status.phase=="Running")].metadata.name}' | wc -w)
         done
         echo "All pods are ready."
-
     - name: Apply Nginx Service YAML in Minikube
       run: |
         kubectl apply -f nginx-project/nginx-service.yml
         kubectl get service nginx
-
     - name: Port-forward the service for access
       run: |
         kubectl port-forward svc/nginx 8080:80 &
