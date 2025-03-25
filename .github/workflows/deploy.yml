@@ -40,6 +40,7 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
+        DOCKER_HOST: unix:///var/run/docker.sock
 
     - name: Delete Existing StatefulSet
       run: |
