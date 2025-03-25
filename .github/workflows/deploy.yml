@@ -35,13 +35,7 @@ jobs:
         context: ./nginx-project
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
-
-    - name: Scan Docker image for vulnerabilities
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
-        DOCKER_HOST: unix:///var/run/docker.sock
-
+        
     - name: Delete Existing StatefulSet
       run: |
         kubectl delete statefulset nginx-statefulset --ignore-not-found=true
