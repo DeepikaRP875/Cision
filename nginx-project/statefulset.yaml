@@ -14,25 +14,18 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image: deepika2897/nginx-1.19:latest  
-          ports:
-            - containerPort: 80
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-          volumeMounts:
-            - name: nginx-storage
-              mountPath: /usr/share/nginx/html
+      - name: nginx
+        image: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-data
+          mountPath: /usr/share/nginx/html
   volumeClaimTemplates:
-    - metadata:
-        name: nginx-storage
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
+  - metadata:
+      name: nginx-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
