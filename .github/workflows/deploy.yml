@@ -1,76 +1,61 @@
-name: CI/CD Pipeline
+name: Build and Deploy to Minikube
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger the workflow on push to the `main` branch
   pull_request:
-
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
-
-env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}
+    branches:
+      - main  # Trigger the workflow on pull requests targeting `main`
 
 jobs:
-  build:
-    name: Build and Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    # Step 1: Checkout the code from the repository
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
+    # Step 2: Set up Docker
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1.5.1
+      uses: docker/setup-buildx-action@v2
 
-    - name: Login to DockerHub
-      uses: docker/login-action@v1.10.0
+    # Step 3: Log in to Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2.10.0
-      with:
-        context: ./nginx-project
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/demodockerrepo:1.19
-
-    - name: Configure AWS credentials from AWS account
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: ${{ secrets.AWS_ROLE }}
-        aws-region: ${{ secrets.AWS_REGION }}
-        role-session-name: GitHub-OIDC-TERRAFORM
-
-    - name: Install eksctl
+    # Step 4: Build the Docker image
+    - name: Build Docker image
       run: |
-        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.94.0/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-        sudo mv /tmp/eksctl /usr/local/bin
+        docker build -t deepika2897/nginx-1.19:latest .
 
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
+    # Step 5: Push Docker image to Docker Hub
+    - name: Push Docker image to Docker Hub
+      run: |
+        docker push deepika2897/nginx-1.19:latest
+
+    # Step 6: Set up Minikube
+    - name: Set up Minikube
+      uses: medikoo/action-minikube@v2
       with:
-        version: 'v1.18.0'
+        minikube_version: 'v1.30.0'
 
-    - name: Update kubeconfig
+    # Step 7: Start Minikube
+    - name: Start Minikube
       run: |
-        aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
+        minikube start --driver=docker
 
-    - name: Verify AWS credentials
-      run: aws sts get-caller-identity
-
-    - name: Verify kubeconfig
-      run: kubectl config view
-
-    - name: Set Kubernetes Context
-      run: kubectl config use-context arn:aws:eks:${{ secrets.AWS_REGION }}:${{ secrets.AWS_ACCOUNT_ID }}:cluster/${{ secrets.EKS_CLUSTER_NAME }}
-
-
-    - name: Deploy to Kubernetes
+    # Step 8: Apply Kubernetes StatefulSet YAML in Minikube
+    - name: Apply StatefulSet in Minikube
       run: |
-        sleep 5 # Add a small delay
-        kubectl apply -f nginx-project/statefulset.yaml
+        kubectl apply -f statefulset.yaml
+        kubectl rollout status statefulset/nginx-statefulset
+
+    # Step 9: Expose the service and get the URL
+    - name: Expose Service and Get URL
+      run: |
+        minikube service nginx --url
