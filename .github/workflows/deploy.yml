@@ -3,59 +3,68 @@ name: Build and Deploy to Minikube
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the `main` branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger the workflow on pull requests targeting `main`
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the code from the repository
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 2: Set up Docker
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    # Step 3: Log in to Docker Hub
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Step 4: Build the Docker image
     - name: Build Docker image
       run: |
         docker build -t deepika2897/nginx-1.19:latest .
 
-    # Step 5: Push Docker image to Docker Hub
     - name: Push Docker image to Docker Hub
       run: |
         docker push deepika2897/nginx-1.19:latest
 
-    # Step 6: Set up Minikube
-    - name: Set up Minikube
-      uses: medikoo/action-minikube@v2
-      with:
-        minikube_version: 'v1.30.0'
+    - name: Install Minikube
+      run: |
+        curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.30.0/minikube-linux-amd64
+        chmod +x minikube
+        sudo mv minikube /usr/local/bin/
+        minikube version
 
-    # Step 7: Start Minikube
-    - name: Start Minikube
+    - name: Start Minikube with Docker driver
       run: |
         minikube start --driver=docker
 
-    # Step 8: Apply Kubernetes StatefulSet YAML in Minikube
-    - name: Apply StatefulSet in Minikube
+    - name: Set up kubectl to work with Minikube
+      run: |
+        echo "export KUBEVERSION=$(minikube kubectl --version)" >> $GITHUB_ENV
+        echo "export KUBEVERSION"        
+        echo "export KUBE_CTX=default" >> $GITHUB_ENV
+        echo "export KUBE_CTX" 
+        echo "export MINIKUBE_PROFILE=default" >> $GITHUB_ENV
+        echo "export MINIKUBE_PROFILE"
+
+    - name: Apply StatefulSet YAML in Minikube
       run: |
         kubectl apply -f statefulset.yaml
         kubectl rollout status statefulset/nginx-statefulset
 
-    # Step 9: Expose the service and get the URL
-    - name: Expose Service and Get URL
+    - name: Apply Nginx Service YAML in Minikube
       run: |
-        minikube service nginx --url
+        kubectl apply -f nginx-service.yaml
+        kubectl rollout status service/nginx
+
+    - name: Port-forward the service for access
+      run: |
+        kubectl port-forward svc/nginx 8080:80 &
+        sleep 5 # Wait for port-forwarding to establish
+        curl http://localhost:8080
